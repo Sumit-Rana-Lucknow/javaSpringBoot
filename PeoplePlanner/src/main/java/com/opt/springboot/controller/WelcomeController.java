@@ -1,6 +1,7 @@
 package com.opt.springboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,8 +23,12 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public String addUser(@RequestBody User user){
-		System.out.println(user.toString());
-		return service.addUserToDb(user);
+	public User addUser(@RequestBody User user){
+		return service.addOrUpdateUserToDb(user);
+	}
+	
+	@RequestMapping(value = "/findUser/{userId}", method = RequestMethod.GET)
+	public User addUser(@PathVariable() Long userId){
+		return service.findUser(userId);
 	}
 }

@@ -19,10 +19,19 @@ public class WelcomeService {
 	}
 
 	@Transactional
-	public String addUserToDb(User user) {
-		entityManager.persist(user);
+	public User addOrUpdateUserToDb(User user) {
+		if(user.getId()==null){
+			entityManager.persist(user);
+		}else{
+			entityManager.merge(user);
+		}
+		entityManager.flush();
 		System.out.println(user.toString());
-		return null;
+		return user;
+	}
+	
+	public User findUser(Long userId){
+		return entityManager.find(User.class, userId);
 	}
 
 	
