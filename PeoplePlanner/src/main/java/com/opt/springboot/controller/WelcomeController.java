@@ -3,6 +3,8 @@ package com.opt.springboot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.opt.springboot.entity.User;
 import com.opt.springboot.services.WelcomeService;
 
 
@@ -15,5 +17,10 @@ public class WelcomeController {
 	@RequestMapping("/welcome")
 	public String welcome(){
 		return service.retrieveWelcomeMessage();
+	}
+	
+	@RequestMapping("/addUser")
+	public String addUser(User user){
+		return service.addUserToDb(user);
 	}
 }

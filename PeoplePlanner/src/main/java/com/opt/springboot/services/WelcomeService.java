@@ -2,6 +2,8 @@ package com.opt.springboot.services;
 
 import org.springframework.stereotype.Component;
 
+import com.opt.springboot.entity.User;
+
 @Component
 public class WelcomeService {
 	
@@ -9,4 +11,10 @@ public class WelcomeService {
 		//Complex Method
 		return "Good Morning updated";
 	}
+
+	public String addUserToDb(User user) {
+		System.out.println(user.toString());
+		return null;
+	}
+
 }
