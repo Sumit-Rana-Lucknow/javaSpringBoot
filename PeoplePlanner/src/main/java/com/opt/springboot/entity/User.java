@@ -12,11 +12,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+	// primary key
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +39,5 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + "]";
 	}
-	
-	
+
 }
